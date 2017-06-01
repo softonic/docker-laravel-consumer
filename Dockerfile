@@ -1,5 +1,23 @@
 # Use official php image.
-FROM php:7.0-cli
+FROM php:7.1-cli
+ARG "version=1.3-dev"
+ARG "build_date=unknown"
+ARG "commit_hash=unknown"
+ARG "vcs_url=unknown"
+ARG "vcs_branch=unknown"
+
+LABEL org.label-schema.vendor="Softonic" \
+    org.label-schema.name="laravel-consumer" \
+    org.label-schema.description="PHP CLI Docker image extension to use with Laravel consumers" \
+    org.label-schema.usage="/src/README.md" \
+    org.label-schema.url="https://github.com/softonic/docker-laravel-consumer/blob/master/README.md" \
+    org.label-schema.vcs-url=$vcs_url \
+    org.label-schema.vcs-branch=$vcs_branch \
+    org.label-schema.vcs-ref=$commit_hash \
+    org.label-schema.version=$version \
+    org.label-schema.schema-version="1.0" \
+    org.label-schema.docker.cmd.devel="" \
+    org.label-schema.build-date=$build_date
 
 # Installing required dependencies of laravel project.
 RUN apt-get update && apt-get install -y  \

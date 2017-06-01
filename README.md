@@ -1,2 +1,2 @@
 # docker-laravel-consumer
-PHP-FPM extension to use with Laravel consumers
+PHP CLI Docker image extension to use with Laravel consumers
