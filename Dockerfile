@@ -27,4 +27,8 @@ ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Copy project to virtualhost directory
-COPY ./laravel /var/www/html/
+WORKDIR /app
+COPY ./laravel /app
+
+# Install dependencies
+RUN composer install --no-dev --no-interaction && composer clear-cache
