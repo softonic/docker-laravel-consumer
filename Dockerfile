@@ -44,6 +44,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN mkdir -p /scripts/docker-entrypoint.d
-COPY consumer-entrypoint.sh /scripts
-ENTRYPOINT ["/scripts/consumer-entrypoint.sh"]
+COPY docker-php-entrypoint.sh /usr/local/bin/docker-php-entrypoint
