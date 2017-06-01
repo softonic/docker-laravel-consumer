@@ -25,10 +25,3 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 # Timezone London to sync timestamps
 ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-# Copy project to virtualhost directory
-WORKDIR /app
-COPY ./laravel /app
-
-# Install dependencies
-RUN composer install --no-dev --no-interaction && composer clear-cache
