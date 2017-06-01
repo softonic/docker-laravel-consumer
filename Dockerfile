@@ -44,6 +44,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY consumer-entrypoint /usr/local/bin/
-
-ENTRYPOINT ["consumer-entrypoint"]
+RUN mkdir -p /scripts
+COPY consumer-entrypoint.sh /scripts
+RUN chmod +x /scripts/consumer-entrypoint.sh
+ENTRYPOINT ["/scripts/consumer-entrypoint.sh"]
