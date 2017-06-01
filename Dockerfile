@@ -43,3 +43,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 # Timezone London to sync timestamps
 ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+COPY consumer-entrypoint /usr/local/bin/
+
+ENTRYPOINT ["consumer-entrypoint"]
