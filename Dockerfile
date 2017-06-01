@@ -46,5 +46,4 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN mkdir -p /scripts/docker-entrypoint.d
 COPY consumer-entrypoint.sh /scripts
-RUN chmod +x /scripts/consumer-entrypoint.sh
 ENTRYPOINT ["/scripts/consumer-entrypoint.sh"]
