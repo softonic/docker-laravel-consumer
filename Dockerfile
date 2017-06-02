@@ -1,6 +1,6 @@
 # Use official php image.
 FROM php:7.1-cli
-ARG "version=1.3-dev"
+ARG "version=2.3-dev"
 ARG "build_date=unknown"
 ARG "commit_hash=unknown"
 ARG "vcs_url=unknown"
@@ -44,5 +44,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ 
 ENV TZ=Europe/Madrid
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-COPY docker-entrypoint.d /scripts/docker-entrypoint.d
-COPY docker-php-entrypoint.sh /usr/local/bin/docker-php-entrypoint
+COPY rootfs/ /
