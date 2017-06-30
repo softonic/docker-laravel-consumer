@@ -1,6 +1,6 @@
 # Use official php image.
 FROM php:7.1-cli
-ARG "version=2.3-dev"
+ARG "version=2.5-dev"
 ARG "build_date=unknown"
 ARG "commit_hash=unknown"
 ARG "vcs_url=unknown"
@@ -38,10 +38,10 @@ RUN apt-get update && apt-get install -y  \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer \
-    && composer global require "hirak/prestissimo:0.3.4"
 
-# Timezone London to sync timestamps
-ENV TZ=Europe/Madrid
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+ENV COMPOSER_ALLOW_SUPERUSER 1
+
+RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress --no-suggest --optimize-autoloader --classmap-authoritative \
+	&& composer clear-cache
 
 COPY rootfs/ /
