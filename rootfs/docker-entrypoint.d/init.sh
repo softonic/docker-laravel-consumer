@@ -6,4 +6,5 @@ if [ ! -z ${EXECUTE_COMPOSER_DEV_INSTALL+x} ]; then
     composer clear-cache
 fi
 
+php /app/artisan config:cache
 php /app/artisan optimize
