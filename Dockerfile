@@ -45,7 +45,3 @@ RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress
 	&& composer clear-cache
 
 COPY rootfs/ /
-
-# Set Permissions to writable directories
-RUN composer install --no-dev --no-interaction --optimize-autoloader &&\
-    composer clear-cache
