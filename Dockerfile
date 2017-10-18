@@ -1,6 +1,6 @@
 # Use official php image.
 FROM php:7.1-cli
-ARG "version=2.5-dev"
+ARG "version=3.0-dev"
 ARG "build_date=unknown"
 ARG "commit_hash=unknown"
 ARG "vcs_url=unknown"
@@ -45,3 +45,8 @@ RUN composer global require "hirak/prestissimo:^0.3" --prefer-dist --no-progress
 	&& composer clear-cache
 
 COPY rootfs/ /
+
+# Set Permissions to writable directories
+RUN chown -R www-data: storage bootstrap/cache &&\
+    composer install --no-dev --no-interaction --optimize-autoloader &&\
+    composer clear-cache
