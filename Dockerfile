@@ -1,6 +1,6 @@
 # Use official php image.
 FROM php:7.1-cli
-ARG "version=2.5-dev"
+ARG "version=3.0-dev"
 ARG "build_date=unknown"
 ARG "commit_hash=unknown"
 ARG "vcs_url=unknown"
